@@ -5,8 +5,8 @@ $( document ).ready(function() {
 		long:0,
 		lat:0,
 	}
-	var food_key = "389a89102bf5098a9a96f2a47339ca37"
-	var weather_Key = "95b36b47ad5456a7aec150f269723948"
+	var food_key = ""
+	var weather_Key = ""
 	
 	if (!navigator.geolocation) {
 		status.textContent = 'Geolocation is not supported by your browser';
