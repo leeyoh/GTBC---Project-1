@@ -5,8 +5,8 @@ $( document ).ready(function() {
 		long:0,
 		lat:0,
 	}
-	var food_key = ""
-	var weather_Key = ""
+	var food_key = ZOMATO_KEY;
+	var weather_Key = WEATHER_KEY;
 	
 	if (!navigator.geolocation) {
 		status.textContent = 'Geolocation is not supported by your browser';
