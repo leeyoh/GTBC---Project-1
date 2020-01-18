@@ -5,8 +5,10 @@ $( document ).ready(function() {
 		long:0,
 		lat:0,
 	}
+
 	var food_key = ZOMATO_KEY;
 	var weather_Key = WEATHER_KEY;
+	var imgURL = [];
 	
 	if (!navigator.geolocation) {
 		status.textContent = 'Geolocation is not supported by your browser';
@@ -63,11 +65,13 @@ $( document ).ready(function() {
 			response.nearby_restaurants.forEach(function(ele){
 
 					getMenu(ele.restaurant.id)
-
+				
 			})
 		})
 	}
 
+	
+	
 	function getMenu(res_id){
 		var queryURL = 'https://developers.zomato.com/api/v2.1/restaurant?'
 		var queryParams = {'res_id': res_id} ;
@@ -80,21 +84,51 @@ $( document ).ready(function() {
 			method: "GET"
 		}).then(function(response){
 			console.log(response)
+			console.log(JSON.stringify(response.photos[0].photo.url))
+			var photo =JSON.stringify(response.photos[0].photo.url);
+			
+			imgURL.push(photo);
+			console.log(imgURL);
+			placeimg();
 		})
 	}
 
 
 
+
 	function buildQueryURLs() {
-		getGeoCode()		
+		getLocation()		
 
 	}
 
+	
+	function placeimg(){
+	for (var i = 0; i < imgURL.length; i++) {	
+
+$(".image").map(function(){
+
+	
+	var m= $(this).attr('data-source')
 
 
-	$("#run-search").on("click", function(event) {
+	if ( m == i ){
+
+		console.log($(this));
+
+	}
+
+});
+
+
+
+
+	}	
+}
+
+	$("#submitbtn").on("click", function(event) {
 		console.log('click')
 		event.preventDefault();	
+		placeimg();
 		buildQueryURLs();
 	});
 

@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>choicemaker</title>
+    <!-- added UIkit js -->
+      <script src="uikit.js"></script>
+    <!-- added UIkit -->
+<link rel= "stylesheet" href="uikit.css">
+<!-- added google font -->
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <!-- added my own internal stylesheet   -->
+        <link rel= "stylesheet" href="style.css">
+       </head>
+    <body>
+        <div class="uk-flex uk-flex-center uk-background-cover uk-dark uk-background-secondary">            
+        <div>
+        <div class="uk-inline">
+            <img src="indexBackground.jpg" alt="background">
+                <div class="uk-overlay uk-overlay-default uk-position-center uk-position-fixed uk-dark uk-text-center">click to enter       
+<br>
+<!-- This is a button toggling the modal -->
+<button class="uk-button-small uk-button-muted" type="button" uk-toggle="target: #modal"><h2><b>choicemaker</b></h2></button>
 
-<html>
-<head>
-	<meta charset="UTF-8">
-	<!-- Bootstrap CSS CDN  -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="Assets/CSS/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title></title>
-</head>
-<body>
-
-	<div class = 'container'> 
-
-
-		<div id = 'row' class = 'row'>
-			<div class = 'city col-sm-11'> 
-				Nav Area
-				<form class="location-search" action="#">
-					<input type="text" id="search-term" placeholder="Search for a City" name="search">
-					<button type="submit" id="run-search" ><i  class="fa fa-search"></i></button>
-				</form>
-			</div> 
-		</div>
-	</div>
-	
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- This is the modal -->
+<div id="modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body ">
+        <h2 class="uk-modal-title uk-text-center">First, reveal your location...<br> Then, let us pick your meals!</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="uk-text-right">
+           <a href="results1.html"><button class="uk-button uk-button-primary" id="submitbtn" type="button">Agree</button></a> 
+           <a href="https://www.google.com/"><button class="uk-button uk-button-default" type="button">Cancel</button></a>
+            
+    </div></div></p>
+    </div></div>
+    </div></div></div>      
+   
+    <script src="uikit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<!-- jQuery JS -->
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
@@ -37,5 +48,5 @@
 	<script src="https://kit.fontawesome.com/2dd3ac296d.js" crossorigin="anonymous"></script>
 
 
-</body>
-</html>
+    </body>
+    </html>
