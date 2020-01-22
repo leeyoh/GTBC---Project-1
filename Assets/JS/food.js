@@ -1,13 +1,12 @@
 $( document ).ready(function() {
 	console.log('ready')
 
-	var location = {
-		long:0,
-		lat:0,
-	}
 	var food_key = ZOMATO_KEY
 	var weather_Key = WEATHER_KEY
-	
+	var textList = []; 
+
+	var foods = []
+
 	if (!navigator.geolocation) {
 		status.textContent = 'Geolocation is not supported by your browser';
 	} else {
@@ -35,20 +34,20 @@ $( document ).ready(function() {
 			method: "GET"
 		}).then(function(response){
 			console.log(response)
-			location.lat = response.city.coord.lat
-			location.long = response.city.coord.lat
-			getLocation()
+			getLocation(response)
 		})
 	}
 
-	function getLocation(){
+
+	// Get the resturant ID 
+	function getLocation(data){
 		var queryURL = 'https://developers.zomato.com/api/v2.1/geocode?'
 		var queryParams = {};
-	
-		queryParams.lat = location.lat
-		queryParams.lon = location.long
-		console.log(queryParams)
-
+		
+		queryParams.lat = data.city.coord.lat
+		queryParams.lon = data.city.coord.lat
+		textList.push("Getting Menu Items") /// Interesting 
+		console.log(queryURL + $.param(queryParams))
 		$.ajax({
 			headers: {
 			'user-key':food_key,
@@ -56,17 +55,13 @@ $( document ).ready(function() {
 			url: queryURL + $.param(queryParams),
 			method: "GET"
 		}).then(function(response){
-			console.log(response.nearby_restaurants[0].restaurant.id)
-
-
-			
+			console.log(response)
 			response.nearby_restaurants.forEach(function(ele){
-
-					getMenu(ele.restaurant.id)
-
+				getMenu(ele.restaurant.id)
 			})
 		})
 	}
+
 
 	function getMenu(res_id){
 		var queryURL = 'https://developers.zomato.com/api/v2.1/restaurant?'
@@ -80,22 +75,116 @@ $( document ).ready(function() {
 			method: "GET"
 		}).then(function(response){
 			console.log(response)
+			if(response.featured_image != ''){
+				foods.push({'photo1':response.featured_image, 
+							'photo2':response.featured_image, 
+							  'url':response.menu_url})			
+			}
 		})
+	}
+
+	var userUpdated = false; 
+	var imagesLoaded; 
+	var userTextCnt = 0; 
+	var foodIndex = 0;
+
+	function updateUser(){
+		var cont = $('#image-grid')
+
+		if(userTextCnt == 2){
+			userUpdated = true;
+
+
+			var formCont = $('#navForm')
+			var button = $('<button>')
+			button.attr('id','run-random')
+			button.addClass("uk-button uk-button-default")
+			button.html("Random")
+			formCont.append(button)
+	  		
+	  		userTextCnt++;
+			$("#run-random").on("click", function(event) {
+				
+				var randInd = Math.floor(Math.random() * foodIndex) 	
+				console.log(randInd)	
+				$('#foodID-'+randInd).addClass('uk-animation-shake')
+				
+			})
+		}
+
+	
+
+		if( textList.length != 0 && !userUpdated){
+			var textStr = textList.shift();
+	
+			cont.empty()
+	
+			var card = $('<div>')
+			var text = $('<p>')
+			card.addClass("uk-animation-fade greeting")
+			text.addClass("uk-text-center")
+			text.text(textStr)
+
+			card.append(text)
+	  		cont.append(card)
+	  		userTextCnt++;
+		}
+
+		if(foods.length != 0 && userUpdated){
+			$('.greeting').remove()
+			var foodObj = foods.shift();
+			var card = $('<div>')
+			var link = $('<a>')
+			var img1 = $('<img>')
+			var img2 = $('<img>')
+
+			card.addClass("uk-animation-fade uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle")
+			link.attr("href", foodObj.url)
+			link.addClass("uk-inline-clip uk-transition-toggle ")
+			img1.attr('src', foodObj.photo2)
+			img2.attr('src', foodObj.photo1)
+			img2.addClass("uk-transition-scale-up uk-position-cover")
+			link.append(img1)
+			link.append(img2)
+			card.attr('id','foodID-'+ foodIndex)
+			card.append(link)
+			cont.append(card)
+
+			foodIndex++;
+		}
+
+		if(!userUpdated ){
+			setTimeout(updateUser,2000);
+		} else {
+			setTimeout(updateUser,50);
+		}
+		
+	}	
+
+	function appendImage(){
+		var cont = $('#image-grid')
+		cont.empty()
 	}
 
 
 
 	function buildQueryURLs() {
 		getGeoCode()		
-
 	}
-
 
 
 	$("#run-search").on("click", function(event) {
 		console.log('click')
-		event.preventDefault();	
+		$('#run-random').remove()
+		foods = []
+		textList = []
+		userUpdated = false;
+		userTextCnt = 0;
+		foodIndex = 0;
+		event.preventDefault();
+		textList.push("Finding Nearby Resturants")
 		buildQueryURLs();
+		updateUser();
 	});
 
 
