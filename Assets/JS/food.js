@@ -85,11 +85,13 @@ $( document ).ready(function() {
 		}).then(function(response){
 			console.log(response)
 			console.log(JSON.stringify(response.photos[0].photo.url))
-			var photo =JSON.stringify(response.photos[0].photo.url);
+			var photo =(response.photos[0].photo.url);
 			
 			imgURL.push(photo);
 			console.log(imgURL);
-			placeimg();
+			console.log(imgURL[0]);
+			
+		 placeimg();
 		})
 	}
 
@@ -103,17 +105,18 @@ $( document ).ready(function() {
 
 	
 	function placeimg(){
-	for (var i = 0; i < imgURL.length; i++) {	
-
-$(".image").map(function(){
-
-	
-	var m= $(this).attr('data-source')
 
 
-	if ( m == i ){
-
-		console.log($(this));
+	$(".image0").attr("src",imgURL[0]);
+	$(".image1").attr("src",imgURL[1]);
+	$(".image2").attr("src",imgURL[2]);
+	$(".image3").attr("src",imgURL[3]);
+	$(".image4").attr("src",imgURL[4]);
+	$(".image5").attr("src",imgURL[5]);
+	$(".image6").attr("src",imgURL[6]);
+	$(".image7").attr("src",imgURL[7]);
+	$(".image8").attr("src",imgURL[8]);
+	$(".image9").attr("src",imgURL[9]);
 
 	}
 
@@ -122,17 +125,22 @@ $(".image").map(function(){
 
 
 
-	}	
-}
+	// }	
+// }
 
 	$("#submitbtn").on("click", function(event) {
 		console.log('click')
 		event.preventDefault();	
-		placeimg();
+		
+
+	
+
+		window.location.href='../GTBC---PROJECT-1/results1.html';
+		
 		buildQueryURLs();
-	});
+	 placeimg();
 
 
 
 
-});
+ });
