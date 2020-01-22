@@ -9,6 +9,9 @@ $( document ).ready(function() {
 	var food_key = ZOMATO_KEY;
 	var weather_Key = WEATHER_KEY;
 	var imgURL = [];
+	var locations =[];
+	var names = [];
+	var phonenumbers =[];
 	
 	if (!navigator.geolocation) {
 		status.textContent = 'Geolocation is not supported by your browser';
@@ -85,11 +88,27 @@ $( document ).ready(function() {
 		}).then(function(response){
 			console.log(response)
 			console.log(JSON.stringify(response.photos[0].photo.url))
-			var photo =(response.photos[0].photo.url);
 			
+			
+			var photo =(response.photos[0].photo.url);
+			var location=response.location.address;
 			imgURL.push(photo);
 			console.log(imgURL);
-			console.log(imgURL[0]);
+			
+
+			var location=response.location.address;
+			console.log(location);
+			locations.push(location);
+			console.log(locations);
+
+			var name= response.name;
+			names.push(name);
+			console.log(names);
+			
+			var phone = response.phone_numbers;
+			phonenumbers.push(phone);
+			console.log(phonenumbers);
+			
 			
 		 placeimg();
 		})
@@ -99,7 +118,7 @@ $( document ).ready(function() {
 
 
 	function buildQueryURLs() {
-		getLocation()		
+		getLocation();		
 
 	}
 
@@ -118,6 +137,49 @@ $( document ).ready(function() {
 	$(".image8").attr("src",imgURL[8]);
 	$(".image9").attr("src",imgURL[9]);
 
+	$(".name0").text(names[0]);
+	$(".phone0").text(phonenumbers[0]);
+	$(".address0").text(locations[0]);
+
+	$(".name1").text(names[1]);
+	$(".phone1").text(phonenumbers[1]);
+	$(".address1").text(locations[1]);
+
+	$(".name2").text(names[2]);
+	$(".phone2").text(phonenumbers[2]);
+	$(".address2").text(locations[2]);
+
+	$(".name3").text(names[3]);
+	$(".phone3").text(phonenumbers[3]);
+	$(".address3").text(locations[3]);
+
+	$(".name4").text(names[4]);
+	$(".phone4").text(phonenumbers[4]);
+	$(".address4").text(locations[4]);
+
+	$(".name5").text(names[5]);
+	$(".phone5").text(phonenumbers[5]);
+	$(".address5").text(locations[5]);
+
+	$(".name6").text(names[6]);
+	$(".phone6").text(phonenumbers[6]);
+	$(".address6").text(locations[6]);
+
+	$(".name7").text(names[7]);
+	$(".phone7").text(phonenumbers[7]);
+	$(".address7").text(locations[7]);
+
+	$(".name8").text(names[8]);
+	$(".phone8").text(phonenumbers[8]);
+	$(".address8").text(locations[8]);
+
+	$(".name9").text(names[9]);
+	$(".phone9").text(phonenumbers[9]);
+	$(".address9").text(locations[9]);
+
+
+
+
 	}
 
 });
@@ -133,7 +195,7 @@ $( document ).ready(function() {
 		event.preventDefault();	
 		
 
-	
+		
 
 		window.location.href='../GTBC---PROJECT-1/results1.html';
 		
