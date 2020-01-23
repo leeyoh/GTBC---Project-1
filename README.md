@@ -33,16 +33,12 @@ Welcome to Project 1! This is an important step in your full-stack journey as yo
 
 -Explain agile software development
 
--Design, build, and deploy a client-side web application using GitHub Pages
+-Design, build, & deploy a client-side web application using GitHub Pages
 
--Prepare a professional presentation and repository README for your project
+-Prepare a professional presentation & repository README for your project
 
 
 ### Screenshots of deployed app:
-
-<img src="Assets/Images/screenshotA.jpg">
-
-<img src="Assets/Images/screenshotB.jpg">
 
 <img src="Assets/Images/screenshot1.jpg">
 
