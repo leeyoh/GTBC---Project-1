@@ -40,10 +40,10 @@ Welcome to Project 1! This is an important step in your full-stack journey as yo
 
 ### Screenshots of deployed app:
 
-<img src="screenshot1.jpg">
+<img src="Assets/Images/screenshot1.jpg">
 
-<img src="screenshot2.jpg">
+<img src="Assets/Images/screenshot2.jpg">
 
-<img src="screenshot3.jpg">
+<img src="Assets/Images/screenshot3.jpg">
 
-<img src="screenshot4.jpg">
+<img src="Assets/Images/screenshot4.jpg">
