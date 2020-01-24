@@ -6,6 +6,7 @@ $( document ).ready(function() {
 	var textList = []; 
 
 	var foods = []
+	var flagLoaded = false; 
 
 	if (!navigator.geolocation) {
 		status.textContent = 'Geolocation is not supported by your browser';
@@ -59,6 +60,8 @@ $( document ).ready(function() {
 			response.nearby_restaurants.forEach(function(ele){
 				getMenu(ele.restaurant.id)
 			})
+			flagLoaded = true; 
+			placeHolder(10)
 		})
 	}
 
@@ -87,6 +90,27 @@ $( document ).ready(function() {
 	var imagesLoaded; 
 	var userTextCnt = 0; 
 	var foodIndex = 0;
+
+	window.onscroll = function(ev) {
+		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			// you're at the bottom of the page
+			placeHolder(10)
+			console.log('bottom')
+		}
+	};
+
+	function placeHolder(units){
+		if(flagLoaded){
+			for(let i = 0; i < units; i++){
+				foods.push({'photo2':'http://place-puppy.com/300x300', 
+							'photo1':'https://www.placecage.com/300/300', 
+							  'url':'http://placekitten.com/g/300/500'
+							  'rating': 5,
+							  'name': 'Dog House'})			
+			}	
+		}
+	}
+
 
 	function updateUser(){
 		var cont = $('#image-grid')
@@ -144,6 +168,9 @@ $( document ).ready(function() {
 			img1.attr('src', foodObj.photo2)
 			img2.attr('src', foodObj.photo1)
 			img2.addClass("uk-transition-scale-up uk-position-cover")
+			img2.css('filter', 'grayscale(100%)')
+
+
 			link.append(img1)
 			link.append(img2)
 			card.attr('id','foodID-'+ foodIndex)
@@ -185,6 +212,7 @@ $( document ).ready(function() {
 		textList.push("Finding Nearby Resturants")
 		buildQueryURLs();
 		updateUser();
+
 	});
 
 
