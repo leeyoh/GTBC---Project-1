@@ -15,19 +15,29 @@
 </head>
 
 <body>
-	
-	<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-		<div class="uk-navbar-item">
-			<form id = "navForm" action="javascript:void(0)">
-				<input id ="search-term" class="uk-input uk-form-width-medium" type="text" placeholder="Input">
-				<button id = "run-search" class="uk-button uk-button-default">Search</button>
-			</form>	
-		</div>
-	</nav>
+	<div>
 
-	<div id = "image-grid" class="uk-container uk-width-1-1 uk-container-medium uk-child-width-1-2@s uk-child-width-1-5@m" uk-grid="masonry: true">
+		<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+			<div class="uk-navbar-item">
+				<form id = "navForm" action="javascript:void(0)">
+					<input id ="search-term" class="uk-input uk-form-width-medium" type="text" placeholder="Input">
+					<button id = "run-search" class="uk-button uk-button-default">Search</button>
+				</form>	
+			</div>
+		</nav>
+
+		<div id = "image-grid" class="uk-container uk-width-1-1 uk-container-medium uk-child-width-1-2@s uk-child-width-1-5@m" uk-grid="masonry: true">
+		</div>
+		
+		<div>
+		    <div class = 'elevator-button'>
+		    	
+		    </div>
+		</div>
+
 	</div>
-	
+
+	<script src='Assets/JS/elevator.js'></script>
 	<!-- UIkit JS -->
 	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>

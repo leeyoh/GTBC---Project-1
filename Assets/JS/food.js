@@ -104,7 +104,7 @@ $( document ).ready(function() {
 			for(let i = 0; i < units; i++){
 				foods.push({'photo2':'http://place-puppy.com/300x300', 
 							'photo1':'https://www.placecage.com/300/300', 
-							  'url':'http://placekitten.com/g/300/500'
+							  'url':'http://placekitten.com/g/300/500',
 							  'rating': 5,
 							  'name': 'Dog House'})			
 			}	
@@ -198,6 +198,21 @@ $( document ).ready(function() {
 	function buildQueryURLs() {
 		getGeoCode()		
 	}
+
+
+
+	var elevator = new Elevator({
+		element: document.querySelector('.elevator-button'),
+		mainAudio: './music/elevator.mp3', // Music from http://www.bensound.com/
+		endAudio:  './music/ding.mp3'
+	});	
+	
+    
+	
+
+
+          
+
 
 
 	$("#run-search").on("click", function(event) {
